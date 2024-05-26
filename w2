@@ -17,7 +17,7 @@ def display_weather(data):
         print("City not found!")
 
 def main():
-    api_key = "6439882c3f43e9ce99b45138133b0012"
+    api_key = "api key here"
     city = input("Enter city name: ")
     weather_data = get_weather(city, api_key)
     display_weather(weather_data)
