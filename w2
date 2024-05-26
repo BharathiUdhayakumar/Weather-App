@@ -1,0 +1,29 @@
+import requests
+
+def get_weather(city, api_key):
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    complete_url = f"{base_url}q={city}&appid={api_key}&units=metric"
+    response = requests.get(complete_url)
+    return response.json()
+
+def display_weather(data):
+    if data["cod"] != "404":
+        main = data["main"]
+        weather = data["weather"][0]
+        print(f"City: {data['name']}")
+        print(f"Temperature: {main['temp']}°C")
+        print(f"Weather: {weather['description'].capitalize()}")
+    else:
+        print("City not found!")
+
+def main():
+    api_key = "6439882c3f43e9ce99b45138133b0012"
+    city = input("Enter city name: ")
+    weather_data = get_weather(city, api_key)
+    display_weather(weather_data)
+
+if __name__ == "__main__":
+    main()
+
+
+
